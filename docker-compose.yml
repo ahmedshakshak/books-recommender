@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  database:
+    image: 'mysql:8.0.0'
+    ports:
+      - ${MYSQL_PORT}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile_dev
+    volumes:
+      - .:/books-recommender/
+    depends_on:
+      - database
+    env_file: .env
+    command: tail -f /dev/null
+
+  web:
+    build:
+      context: .
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    env_file: .env
