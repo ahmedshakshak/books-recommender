@@ -23,15 +23,21 @@ now the app is ready to serve network network requests
 ## File Hierarchy
 entities/
 It’s responsible for creating application entities (shared classes that all models can deal with) and shared functions.
+
 usecases/
 It’s responsible for handling application usecases and acceptance criteria without paying attention to any technical flow, and it operates against interfaces that handle all technical flow
+
 adapters/
 It’s responsible for handling technical flow for ‘usecases/’ and delegates the technical details to other classes
-modles/
+
+models/
 It’s responsible for dealing with MySQL
+
 controllers/
 It’s responsible for handling user inputs (API parameters) to fulfill application usecases and decorating usecases reply
+
 register/
 It’s responsible for solving all classes’ dependencies and providing a controller ready to handle the traffic
+
 xxxtest/
 It’s responsible for handling all service tests
